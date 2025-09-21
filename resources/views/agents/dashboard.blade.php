@@ -164,7 +164,7 @@
                                                 @if($withdrawal->processedBy)
                                                     {{ $withdrawal->processedBy->name }}
                                                 @else
-                                                    —
+                                                    -
                                                 @endif
                                             </td>
 
@@ -172,7 +172,7 @@
                                                 @if($withdrawal->processed_at)
                                                     {{ $withdrawal->processed_at->format('d M Y H:i') }}
                                                 @else
-                                                    —
+                                                    -
                                                 @endif
                                             </td>
 
