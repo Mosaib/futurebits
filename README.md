@@ -1,7 +1,7 @@
 # Project Setup Instructions
 
 1. Start **XAMPP** or **WAMP** to run MySQL and Apache.
-2. Open the **printfuse** folder.
+2. Open the **futurebits** folder.
 3. Rename the file `.env.example` to `.env`.
 4. Run database migrations with:
    ```bash
