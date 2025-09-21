@@ -21,4 +21,9 @@ class Agent extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function withdrawals()
+    {
+        return $this->hasMany(Withdrawal::class);
+    }
 }

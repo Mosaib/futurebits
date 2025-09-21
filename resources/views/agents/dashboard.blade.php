@@ -64,7 +64,10 @@
             <div class="col-md-10">
                 <div class="card shadow-lg">
                     <div class="card-header bg-primary text-white">
-                        <h4 class="mb-0"><strong>{{ Auth::guard('agent')->user()->name }}</strong></h4>
+                       <div class="d-flex justify-content-between align-items-center">
+                            <div><strong>{{ Auth::guard('agent')->user()->name }}</strong></div>
+                            <div><strong>Wallet Balance: ₹{{ number_format(Auth::guard('agent')->user()->wallet_balance, 2) }}</strong></div>
+                        </div>
                     </div>
                     <div class="card-body">
                         <div class="row mt-4">
@@ -137,6 +140,8 @@
                                         <th>Date</th>
                                         <th>Amount</th>
                                         <th>Status</th>
+                                        <th>Processed By</th>
+                                        <th>Processed At</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -155,6 +160,22 @@
                                                     <span class="badge bg-secondary">{{ ucfirst($withdrawal->status) }}</span>
                                                 @endif
                                             </td>
+                                            <td>
+                                                @if($withdrawal->processedBy)
+                                                    {{ $withdrawal->processedBy->name }}
+                                                @else
+                                                    —
+                                                @endif
+                                            </td>
+
+                                            <td>
+                                                @if($withdrawal->processed_at)
+                                                    {{ $withdrawal->processed_at->format('d M Y H:i') }}
+                                                @else
+                                                    —
+                                                @endif
+                                            </td>
+
                                         </tr>
                                     @empty
                                         <tr>

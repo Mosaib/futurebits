@@ -96,6 +96,9 @@ class AgentAuthController extends Controller
             return back()->with('error', 'You can only withdraw once a week.');
         }
 
+        $agent->wallet_balance -= $request->amount;
+        $agent->save();
+
         Withdrawal::create([
             'agent_id' => $agent->id,
             'amount' => $request->amount,
