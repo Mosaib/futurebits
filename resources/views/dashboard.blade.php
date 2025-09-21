@@ -49,7 +49,7 @@
                     <tbody>
                         @foreach($withdrawals as $w)
                         <tr>
-                            <td class="border px-4 py-2">{{ $w->agent->name }} ({{ $w->agent->email }})</td>
+                            <td class="border px-4 py-2">{{ $w->agent?->name ?? 'N/A' }} ({{ $w->agent?->email ?? '-' }})</td>
                             <td class="border px-4 py-2">₹{{ number_format($w->amount,2) }}</td>
                             <td class="border px-4 py-2">{{ ucfirst($w->status) }}</td>
                             <td class="border px-4 py-2">{{ $w->created_at->format('d M Y H:i') }}</td>
@@ -59,17 +59,19 @@
                                     @csrf
                                     <button style="
                                         background-color: #e1e1e1;
-                                        border-radius: 10px;
-                                        padding: 5px;
+                                        border-radius: 5px;
+                                        padding: 8px;
+                                        font-weight: bold;
                                         color: green;">Approve</button>
                                 </form>
                                 <form action="{{ route('admin.withdrawals.reject', $w->id) }}" method="POST" class="inline-block">
                                     @csrf
                                      <button style="
                                         background-color: #e1e1e1;
-                                        border-radius: 10px;
-                                        padding: 5px;
-                                        margin-left: 25px;
+                                        border-radius: 5px;
+                                        padding: 8px;
+                                        font-weight: bold;
+                                        margin-left: 10px;
                                         color: red;">Reject</button>
                                 </form>
                                 @else
